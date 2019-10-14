@@ -10,41 +10,68 @@ namespace URP.Patches
     static class Patch_PlayerScript_Interact
     {
         [HarmonyPrefix]
-        public static bool Prefix(PlayerScript __instance, int id, Rigidbody ___r, ref bool ___canInteract, ref bool ___interacting, ref IEnumerator __result)
+        public static bool Prefix(PlayerScript __instance, int id, GameScript ___gameScript, Rigidbody ___r, ref bool ___canInteract, ref bool ___interacting, ref IEnumerator __result)
         {
-            KylockeStand stand = null;
-            if (id == 16 || id == 53 && (PlayerScript.curInteractObj == null || (stand = PlayerScript.curInteractObj.GetComponent<KylockeStand>()) == null))
+            if (id == 16 || id == 53)
             {
                 ___r.velocity = new Vector3(0f, 0f, 0f);
-                if (id == 16)
+                if (GameScript.combatMode)
                 {
-                    if (Network.isServer)
+                    if (id >= 20 && id < 30)
                     {
-                        PlayerScript.curInteractObj.SendMessage("Open");
+                        ___gameScript.ExitCM2();
+                    }
+                    else if (id == 17)
+                    {
+                        ___gameScript.ExitCM3();
                     }
                     else
                     {
-                        PlayerScript.curInteractObj.GetComponent<NetworkView>().RPC("Open", RPCMode.Server, new object[0]);
+                        ___gameScript.ExitCM();
                     }
                 }
-                else if (id == 53)
+                if (GameScript.buildMode)
+                {
+                    ___gameScript.ExitBuildMode();
+                }
+                if (id != 6)
+                {
+                    __instance.w.SetActive(false);
+                }
+                KylockeStand stand;
+                if (id == 16 || PlayerScript.curInteractObj == null || (stand = PlayerScript.curInteractObj.GetComponent<KylockeStand>()) == null)
+                {
+                    if (id == 16)
+                    {
+                        if (Network.isServer)
+                        {
+                            PlayerScript.curInteractObj.SendMessage("Open");
+                        }
+                        else
+                        {
+                            PlayerScript.curInteractObj.GetComponent<NetworkView>().RPC("Open", RPCMode.Server, new object[0]);
+                        }
+                    }
+                    else
+                    {
+                        PlayerScript.curInteractObj.SendMessage("Request");
+                        MonoBehaviour.print("sending request");
+                    }
+                    __instance.W(1);
+                    __result = FakeRoutine();
+                    ___interacting = false;
+                    return false;
+                }
+                else
                 {
                     PlayerScript.curInteractObj.SendMessage("Request");
                     MonoBehaviour.print("sending request");
+                    typeof(KylockeStand).GetField("purchased", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(stand, false);
+                    __instance.W(0);
+                    __result = FakeRoutine();
+                    ___interacting = false;
+                    return false;
                 }
-                ___canInteract = false;
-                __result = FakeRoutine();
-                return false;
-            }
-            else if (stand != null)
-            {
-                ___r.velocity = new Vector3(0f, 0f, 0f);
-                PlayerScript.curInteractObj.SendMessage("Request");
-                MonoBehaviour.print("sending request");
-                ___canInteract = true;
-                ___interacting = false;
-                __result = FakeRoutine();
-                return false;
             }
             else
             {

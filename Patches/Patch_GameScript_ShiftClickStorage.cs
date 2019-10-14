@@ -6,77 +6,81 @@ using System.Collections;
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
-    [HarmonyPatch("ShiftClick")]
-    static class Patch_GameScript_ShiftClick
+    [HarmonyPatch("ShiftClickStorage")]
+    static class Patch_GameScript_ShiftClickStorage
     {
         private static Item itemInSlot;
 
         [HarmonyPrefix]
         public static bool Prefix(GameScript __instance, ref bool ___shiftclicking, Item[] ___inventory, ref Item[] ___storage, int slot, int ___curStoragePage, ref IEnumerator __result)
         {
-            itemInSlot = ___inventory[slot];
+            int num = slot + ___curStoragePage * 30;
+            itemInSlot = ___storage[num];
             if (!___shiftclicking && (itemInSlot.id < 300 || itemInSlot.id >= 2000))
             {
                 bool flag1 = false, flag2 = false;
-                int num = 0;
-                int num2 = ___curStoragePage * 30;
-                int num3 = num2 + 30;
-                for (int i = num2; i < num3; i++)
+                int num2 = 0;
+                int id = ___storage[num].id;
+                for (int i = 0; i < 36; i++)
                 {
-                    if (___storage[i].id == itemInSlot.id && ___storage[i].q < 9999)
+                    if (___inventory[i].id == id && ___inventory[i].q < 9999)
                     {
-                        if (___storage[i].q + ___inventory[slot].q <= 9999)
+                        if (___inventory[i].q + ___storage[num].q <= 9999)
                         {
                             flag1 = true;
-                            num = i;
+                            num2 = i;
+                            break;
                         }
                         else
                         {
                             if (!flag2) __instance.GetComponent<AudioSource>().PlayOneShot((AudioClip)Resources.Load("Au/CLICK3"), Menuu.soundLevel / 10f);
-                            ___inventory[slot].q -= 9999 - ___storage[i].q;
-                            ___storage[i].q = 9999;
+                            ___storage[num].q -= 9999 - ___inventory[i].q;
+                            ___inventory[i].q = 9999;
+                            typeof(GameScript).GetMethod("RefreshSlot", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { i });
                             flag2 = true;
                         }
-                        break;
                     }
                 }
                 if (flag1)
                 {
                     __instance.GetComponent<AudioSource>().PlayOneShot((AudioClip)Resources.Load("Au/CLICK3"), Menuu.soundLevel / 10f);
-                    ___storage[num].q += ___inventory[slot].q;
-                    ___inventory[slot] = new Item(0, 0, 0, 0, 0, new int[3], new int[3]);
+                    ___inventory[num2].q += ___storage[num].q;
+                    ___storage[num] = new Item(0, 0, 0, 0, 0, new int[3], new int[3]);
+                    typeof(GameScript).GetMethod("RefreshSlot", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { num2 });
                 }
                 else
                 {
-                    for (int i = num2; i < num3; i++)
+                    for (int i = 0; i < 36; i++)
                     {
-                        if (___storage[i].id == 0)
+                        if (___inventory[i].id == 0)
                         {
                             if (!flag2) __instance.GetComponent<AudioSource>().PlayOneShot((AudioClip)Resources.Load("Au/CLICK3"), Menuu.soundLevel / 10f);
-                            ___storage[i] = ___inventory[slot];
-                            ___inventory[slot] = new Item(0, 0, 0, 0, 0, new int[3], new int[3]);
+                            ___inventory[i] = ___storage[num];
+                            ___storage[num] = new Item(0, 0, 0, 0, 0, new int[3], new int[3]);
+                            typeof(GameScript).GetMethod("RefreshSlot", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { i });
                             break;
                         }
-                        else if (___storage[i].id == itemInSlot.id && ___storage[i].q < 9999)
+                        else if (___inventory[i].id == itemInSlot.id && ___inventory[i].q < 9999)
                         {
-                            if (___storage[i].q + ___inventory[slot].q <= 9999)
+                            if (___inventory[i].q + ___storage[num].q <= 9999)
                             {
                                 if (!flag2) __instance.GetComponent<AudioSource>().PlayOneShot((AudioClip)Resources.Load("Au/CLICK3"), Menuu.soundLevel / 10f);
-                                ___storage[i].q += ___inventory[slot].q;
-                                ___inventory[slot] = new Item(0, 0, 0, 0, 0, new int[3], new int[3]);
+                                ___inventory[i].q += ___storage[num].q;
+                                ___storage[num] = new Item(0, 0, 0, 0, 0, new int[3], new int[3]);
+                                typeof(GameScript).GetMethod("RefreshSlot", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { i });
                                 break;
                             }
                             else
                             {
                                 if (!flag2) __instance.GetComponent<AudioSource>().PlayOneShot((AudioClip)Resources.Load("Au/CLICK3"), Menuu.soundLevel / 10f);
-                                ___inventory[slot].q -= 9999 - ___storage[i].q;
-                                ___storage[i].q = 9999;
+                                ___storage[num].q -= 9999 - ___inventory[i].q;
+                                ___inventory[i].q = 9999;
+                                typeof(GameScript).GetMethod("RefreshSlot", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { i });
                             }
                             flag2 = true;
                         }
                     }
                 }
-                typeof(GameScript).GetMethod("RefreshSlot", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { slot });
                 __instance.StartCoroutine((IEnumerator)typeof(GameScript).GetMethod("RefreshStoragePage", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { ___curStoragePage }));
                 ___shiftclicking = false;
                 __result = FakeRoutine();

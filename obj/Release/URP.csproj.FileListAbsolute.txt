@@ -5,4 +5,3 @@ C:\Users\kaelh\Documents\Modding\Roguelands\Unofficial Roguelands Patch\Release\
 C:\Users\kaelh\Documents\Modding\Roguelands\Unofficial Roguelands Patch\Release\ModInfo.txt
 C:\Users\kaelh\Documents\Modding\Roguelands\Unofficial Roguelands Patch\Release\URP.dll
 C:\Users\kaelh\Documents\Modding\Roguelands\Unofficial Roguelands Patch\obj\Release\URP.dll
-C:\Users\kaelh\Documents\Modding\Roguelands\Unofficial Roguelands Patch\obj\Release\URP.csprojAssemblyReference.cache

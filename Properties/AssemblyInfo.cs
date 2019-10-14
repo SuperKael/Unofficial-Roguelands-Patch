@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("A UMF Mod(umodframework.com) for Roguelands")]
 [assembly: AssemblyCompany("")] //Set this to your name/nickname and/or website
 [assembly: AssemblyCopyright("© 2019 HaneyDev. All rights reserved.")] //Set this to your copyright name.
-[assembly: AssemblyVersion("1.0")] //Set this to the version of your mod.
-[assembly: AssemblyFileVersion("1.0")] //Set this to the version of your mod.
+[assembly: AssemblyVersion("1.1")] //Set this to the version of your mod.
+[assembly: AssemblyFileVersion("1.1")] //Set this to the version of your mod.
 
 [assembly: ComVisible(false)]
 [assembly: Guid("e114f15c-8f45-5f28-a0ba-f97b561eed5e")]
