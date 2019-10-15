@@ -89,23 +89,6 @@ namespace URP.Patches
             return true;
         }
 
-        [HarmonyPostfix]
-        public static void Postfix(GameScript __instance)
-        {
-            if (itemInSlot != null && itemInSlot.id >= 1000 && itemInSlot.id < 2000)
-            {
-                int[] gearBaseStats = (int[])typeof(GameScript).GetMethod("GetGearBaseStats", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { itemInSlot.id });
-                int level = (int)typeof(GameScript).GetMethod("GetItemLevel", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { itemInSlot.exp });
-                for (int j = 0; j < 6; j++)
-                {
-                    if (gearBaseStats[j] > 0)
-                    {
-                        GameScript.GEARSTAT[j] += itemInSlot.tier * 3 + gearBaseStats[j] * (level - 1);
-                    }
-                }
-            }
-        }
-
         public static IEnumerator FakeRoutine()
         {
             yield break;

@@ -1,4 +1,0 @@
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\Release\ModInfo.txt
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\Release\Softcore.dll
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\Softcore\obj\Release\Softcore.dll
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\Softcore\obj\Release\Softcore.csproj.CopyComplete

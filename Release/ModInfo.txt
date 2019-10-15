@@ -26,3 +26,6 @@ The following bugs are fixed (In no particular order):
 Other features that aren't exactly bugfixes (In no particular order):
  - Shift-clicking into and out of the storage now intelligently merges stacks.
  - Removes cooldown between purchases at reusable shop stands.
+
+Bugs fixed that were caused by previous versions of URP:
+ - Shift-clicking droids into and out of storage causes your stats to rise with every shift-click, although it doesn't show until you equip or dequip something else.

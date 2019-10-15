@@ -86,9 +86,9 @@ namespace URP.Patches
         }
 
         [HarmonyPostfix]
-        public static void Postfix(GameScript __instance)
+        public static void Postfix(GameScript __instance, int slot)
         {
-            if (itemInSlot != null && itemInSlot.id >= 1000 && itemInSlot.id < 2000)
+            if (itemInSlot != null && itemInSlot.id >= 1000 && itemInSlot.id < 2000 && slot > 41)
             {
                 int[] gearBaseStats = (int[])typeof(GameScript).GetMethod("GetGearBaseStats", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { itemInSlot.id });
                 int level = (int)typeof(GameScript).GetMethod("GetItemLevel", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { itemInSlot.exp });
