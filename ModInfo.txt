@@ -12,8 +12,12 @@ The following bugs are fixed (In no particular order):
  - If enough EXP is gained to level up multiple times instantaneously, sometimes not all of the gained levels will award skill increases.
  - The LightSworn crystal does a needlessly high amount of damage, instantly unlocking the Echo uniform upon use.
  - The Rogue Bandana still requires you to have stamina to jump and dash, despite causing them to not use stamina.
- - *Quick-crafting some potions will occasionally give nothing if you already have at least one of the potion under your cursor.
- - *Creation machine will sometimes incorrectly state "Emblems must be the same tier!" when that isn't the real issue.
+ - Quick-crafting some potions will occasionally give nothing if you already have at least one of the potion under your cursor.
+ - Creation machine will sometimes incorrectly state "Emblems must be the same tier!" when that isn't the real issue.
+ - *Fellbug uses the attacks of the Aberrant Rock Scarab if in Challenge Mode.
+ - *Fellbug often forgets to use any attacks. (If not in Challenge Mode)
+ - *Mykonogre never drops its gear. (Note: The drop chance is 1 in 20. I know this is very low, but that's clearly what it's supposed to be.)
+ - *Might Shroom, Ironclad, Apocalypse and Exodus Ultra Bosses drop two helms instead of a helm and an armor piece.
  - A few different Stat-Related Fixes and Corrections:
 	- The HELPR 55 bot and its ultimate forms say they boost DEX, but actually boost TEC. (Note: Now actually boosts DEX. There are plenty of bots that boost TEC already.)
 	- The Eye Gadget now properly grants DEX, like it says, instead of TEC on level-up.
@@ -21,8 +25,4 @@ The following bugs are fixed (In no particular order):
 
 Other features that aren't exactly bugfixes (In no particular order):
  - Shift-clicking into and out of the storage now intelligently merges stacks.
- - *Removes cooldown between purchases at reusable shop stands.
-
-Fixed bugs related to the previous version of URP:
- - Various issues related to interaction with chests and item stands, caused by the Halo fix.
- - The shift-clicking feature now applies for removing items from the storage, instead of just putting items into it.
+ - Removes cooldown between purchases at reusable shop stands.
