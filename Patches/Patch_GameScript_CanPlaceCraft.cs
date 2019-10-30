@@ -1,6 +1,7 @@
 using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
+using UModFramework.API;
 
 namespace URP.Patches
 {
@@ -9,8 +10,9 @@ namespace URP.Patches
     static class Patch_GameScript_CanPlaceCraft
     {
         [HarmonyPrefix]
-        public static bool Prefix(GameScript __instance, int a, ref bool __result, ref Item[] ___craft, int ___craftType)
+        public static bool Prefix(GameScript __instance, int a, ref bool __result, int ___craftType)
         {
+            if (UMFMod.GetMod("GadgetCore") != null) return true;
             if (___craftType == 3)
             {
                 __result = (bool) typeof(GameScript).GetMethod("CanPlaceCraft2", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { a });

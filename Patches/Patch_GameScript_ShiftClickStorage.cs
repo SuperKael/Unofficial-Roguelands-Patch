@@ -2,6 +2,7 @@ using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
 using System.Collections;
+using UModFramework.API;
 
 namespace URP.Patches
 {
@@ -14,6 +15,7 @@ namespace URP.Patches
         [HarmonyPrefix]
         public static bool Prefix(GameScript __instance, ref bool ___shiftclicking, Item[] ___inventory, ref Item[] ___storage, int slot, int ___curStoragePage, ref IEnumerator __result)
         {
+            if (UMFMod.GetMod("GadgetCore") != null) return true;
             int num = slot + ___curStoragePage * 30;
             itemInSlot = ___storage[num];
             if (!___shiftclicking && (itemInSlot.id < 300 || itemInSlot.id >= 2000))

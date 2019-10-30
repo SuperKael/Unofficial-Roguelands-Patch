@@ -58,6 +58,10 @@ namespace URP.Patches
                  && codes[i] != null && codes[i].opcode == OpCodes.Ldloc_S)
                 {
                     codes[i].operand = codes[i - 12].operand;
+                    if (i >= 61 && codes[i - 61].opcode == OpCodes.Ldc_I4 && ((int)codes[i - 61].operand) == 895)
+                    {
+                        codes[i - 61].operand = 795;
+                    }
                 }
             }
             return codes.Where(x => x != null);
