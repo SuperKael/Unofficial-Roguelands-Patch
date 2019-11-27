@@ -1,4 +1,6 @@
 # Unofficial-Roguelands-Patch
+Be aware that this requires the 'Mono Patch', as described on the UMF installation page. Alternativelly, installing Gadget Core installs the 'Mono Patch' for you, to make things simpler.
+
 The Unofficial Roguelands Patch (URP) fixes many of Rogueland's bugs.
 Entries labeled with an Asterisk (\*) indicate fixes and features new to the latest release of URP.
 The following bugs are fixed (In no particular order):
