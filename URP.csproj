@@ -34,19 +34,20 @@
       <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Roguelands\uModFramework\Lib\net35\0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0">
+    <Reference Include="Assembly-CSharp">
       <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Roguelands\Roguelands_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <SpecificVersion>true</SpecificVersion>
       <Private>false</Private>
     </Reference>
-    <Reference Include="uModFramework, Version=0.52.1.0">
-      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Roguelands\uModFramework\Lib\net35\uModFramework.OldEngine.dll</HintPath>
-	  <SpecificVersion>true</SpecificVersion>
+    <Reference Include="Ionic.Zip.Unity">
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Roguelands\uModFramework\Lib\net35\Ionic.Zip.Unity.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="UnityEngine, Version=0.0.0.0">
-      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Roguelands\Roguelands_Data\Managed\UnityEngine.dll</HintPath>
-      <SpecificVersion>true</SpecificVersion>
+    <Reference Include="uModFramework">
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Roguelands\Roguelands_Data\Managed\uModFramework.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\Libs\UnityEngine.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

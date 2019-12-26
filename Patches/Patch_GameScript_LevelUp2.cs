@@ -14,7 +14,7 @@ namespace URP.Patches
         private static int[] oldStats;
 
         [HarmonyPrefix]
-        public static void Prefix(GameScript __instance)
+        public static void Prefix()
         {
             oldStats = GameScript.playerBaseStat;
         }

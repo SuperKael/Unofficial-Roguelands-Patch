@@ -11,7 +11,7 @@ namespace URP.Patches
         [HarmonyPostfix]
         public static void Postfix(GameScript __instance, int ___curRecipePage, int ___craftType)
         {
-            if (___curRecipePage == 1 && ___craftType == 1)
+            if (___curRecipePage == 1 && ___craftType == 1 && URP.r1t1Fixed != null)
             {
                 __instance.menuRecipe.GetComponent<Renderer>().material = URP.r1t1Fixed;
             }

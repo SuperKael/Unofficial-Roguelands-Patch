@@ -11,7 +11,7 @@ namespace URP.Patches
         private static bool pausing;
 
         [HarmonyPrefix]
-        public static void Prefix(GameScript __instance)
+        public static void Prefix()
         {
             pausing = GameScript.pausing;
         }

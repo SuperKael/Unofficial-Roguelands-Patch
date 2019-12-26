@@ -10,7 +10,7 @@ namespace URP.Patches
     static class Patch_PlayerScript_Interact
     {
         [HarmonyPrefix]
-        public static bool Prefix(PlayerScript __instance, int id, GameScript ___gameScript, Rigidbody ___r, ref bool ___canInteract, ref bool ___interacting, ref IEnumerator __result)
+        public static bool Prefix(PlayerScript __instance, int id, GameScript ___gameScript, Rigidbody ___r, ref bool ___interacting, ref IEnumerator __result)
         {
             if (id == 16 || id == 53)
             {

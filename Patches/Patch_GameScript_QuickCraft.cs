@@ -9,7 +9,7 @@ namespace URP.Patches
     static class Patch_GameScript_QuickCraft
     {
         [HarmonyPrefix]
-        public static void Prefix(GameScript __instance, ref int q)
+        public static void Prefix(ref int q)
         {
             if (q < 1) q = 1;
         }

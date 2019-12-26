@@ -9,7 +9,7 @@ namespace URP.Patches
     static class Patch_GameScript_Quit3
     {
         [HarmonyPrefix]
-        public static void Prefix(GameScript __instance)
+        public static void Prefix()
         {
             GameScript.poison = 0;
             GameScript.frost = 0;

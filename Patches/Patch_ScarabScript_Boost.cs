@@ -72,7 +72,7 @@ namespace URP.Patches
                         else
                         {
                             instance.GetComponent<NetworkView>().RPC("Au3", RPCMode.All, new object[0]);
-                            GameObject gameObject3 = (GameObject)Network.Instantiate(Resources.Load("proj/fellProj"), instance.transform.position, Quaternion.identity, 0);
+                            Network.Instantiate(Resources.Load("proj/fellProj"), instance.transform.position, Quaternion.identity, 0);
                         }
                     }
                     else

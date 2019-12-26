@@ -17,9 +17,9 @@ The following bugs are fixed (In no particular order):
  - Fellbug uses the attacks of the Aberrant Rock Scarab if in Challenge Mode.
  - Fellbug often forgets to use any attacks. (If not in Challenge Mode)
  - Mykonogre never drops its gear. (Note: The drop chance is 1 in 20. I know this is very low, but that's clearly what it's supposed to be.)
- - *Glaedria also never drops its gear.
+ - Glaedria also never drops its gear.
  - Might Shroom, Ironclad, Apocalypse and Exodus Ultra Bosses drop two helms instead of a helm and an armor piece.
- - *Doubly-fixed Apocalypse drops! There were actually two seperate bugs that both prevented Apocalypse from dropping its gear correctly.
+ - Doubly-fixed Apocalypse drops! There were actually two seperate bugs that both prevented Apocalypse from dropping its gear correctly.
  - A few different Stat-Related Fixes and Corrections:
 	- The HELPR 55 bot and its ultimate forms say they boost DEX, but actually boost TEC. (Note: Now actually boosts DEX. There are plenty of bots that boost TEC already.)
 	- The Eye Gadget now properly grants DEX, like it says, instead of TEC on level-up.
@@ -30,4 +30,4 @@ Other features that aren't exactly bugfixes (In no particular order):
  - Removes cooldown between purchases at reusable shop stands.
 
 Bugs fixed that were caused by previous versions of URP:
- - Shift-clicking droids into and out of storage causes your stats to rise with every shift-click, although it doesn't show until you equip or dequip something else.
+ - URP no longer requires the Mono patch, and therefor is compatible with Mac and Linux.

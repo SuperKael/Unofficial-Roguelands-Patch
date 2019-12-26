@@ -9,7 +9,7 @@ namespace URP.Patches
     static class Patch_PlayerScript_ReloadLevel
     {
         [HarmonyPostfix]
-        public static void Postfix(PlayerScript __instance)
+        public static void Postfix()
         {
             Patch_GameScript_RandomEvent.CancelEvent();
         }

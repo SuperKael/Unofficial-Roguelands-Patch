@@ -11,7 +11,7 @@ namespace URP.Patches
         private static int level;
 
         [HarmonyPrefix]
-        public static void Prefix(GameScript __instance)
+        public static void Prefix()
         {
             level = GameScript.playerLevel;
         }
