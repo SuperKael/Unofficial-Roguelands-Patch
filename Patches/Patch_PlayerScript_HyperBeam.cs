@@ -1,7 +1,4 @@
-using UnityEngine;
 using HarmonyLib;
-using System.Reflection;
-using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -16,7 +13,6 @@ namespace URP.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            List<Label> labels = new List<Label>();
             CodeInstruction[] codes = instructions.ToArray();
             for (int i = 0; i < codes.Length; i++)
             {
