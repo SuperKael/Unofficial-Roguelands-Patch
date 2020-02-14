@@ -22,9 +22,11 @@ namespace URP.Patches
             int levelDif = GameScript.playerLevel - level;
             if (levelDif > 1)
             {
+                GameScript.playerLevel -= levelDif - 1;
                 for (int i = 1; i < levelDif; i++)
                 {
                     typeof(GameScript).GetMethod("LevelUp", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { });
+                    GameScript.playerLevel++;
                 }
             }
         }

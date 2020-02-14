@@ -31,7 +31,7 @@ namespace URP
             URPConfig.Load();
         }
 
-		[UMFHarmony(20)] //Set this to the number of harmony patches in your mod.
+		[UMFHarmony(22)] //Set this to the number of harmony patches in your mod.
         public static void Start()
 		{
 			Log("Unofficial Roguelands Patch v" + UMFMod.GetModVersion().ToString(), true);

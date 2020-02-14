@@ -19,10 +19,9 @@ namespace URP.Patches
                 if (codes[i] != null && codes[i].opcode == OpCodes.Ldstr && (string)codes[i].operand == "Shock2")
                 {
                     codes[i].operand = "HyperBeam2";
-                    return codes;
                 }
             }
-            throw new Exception("String \"Shock2\" not found in PlayerScript.HyperBeam. Patch was not applied.");
+            return codes;
         }
     }
 }
