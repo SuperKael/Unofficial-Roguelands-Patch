@@ -4,12 +4,14 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Linq;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(KylockeStand))]
     [HarmonyPatch("Request")]
-    static class Patch_KylockeStand_Request
+    [HarmonyGadget("URP")]
+    public static class Patch_KylockeStand_Request
     {
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)

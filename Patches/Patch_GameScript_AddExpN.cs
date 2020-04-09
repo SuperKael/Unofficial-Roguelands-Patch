@@ -1,12 +1,14 @@
 using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("AddExpN")]
-    static class Patch_GameScript_AddExpN
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_AddExpN
     {
         private static int level;
 

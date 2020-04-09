@@ -4,12 +4,14 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("LevelUp2")]
-    static class Patch_GameScript_LevelUp2
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_LevelUp2
     {
         private static int[] oldStats;
 

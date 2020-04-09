@@ -1,12 +1,14 @@
 using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(PlayerScript))]
     [HarmonyPatch("ReloadLevel")]
-    static class Patch_PlayerScript_ReloadLevel
+    [HarmonyGadget("URP")]
+    public static class Patch_PlayerScript_ReloadLevel
     {
         [HarmonyPostfix]
         public static void Postfix()

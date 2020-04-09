@@ -1,12 +1,14 @@
 using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("QuickCraft")]
-    static class Patch_GameScript_QuickCraft
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_QuickCraft
     {
         [HarmonyPrefix]
         public static void Prefix(ref int q)

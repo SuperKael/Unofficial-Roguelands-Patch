@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Linq;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(PlayerScript))]
     [HarmonyPatch("HyperBeam")]
-    static class Patch_PlayerScript_HyperBeam
+    [HarmonyGadget("URP")]
+    public static class Patch_PlayerScript_HyperBeam
     {
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)

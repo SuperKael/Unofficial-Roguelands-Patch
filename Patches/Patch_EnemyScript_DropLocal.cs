@@ -4,12 +4,14 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Linq;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(EnemyScript))]
     [HarmonyPatch("DropLocal")]
-    static class Patch_EnemyScript_DropLocal
+    [HarmonyGadget("URP")]
+    public static class Patch_EnemyScript_DropLocal
     {
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)

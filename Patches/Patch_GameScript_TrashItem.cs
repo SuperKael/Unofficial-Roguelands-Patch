@@ -2,12 +2,14 @@ using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
 using System.Collections.Generic;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("TrashItem")]
-    static class Patch_GameScript_TrashItem
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_TrashItem
     {
 #pragma warning disable CS0618 // Type or member is obsolete
         [HarmonyPrefix]

@@ -2,12 +2,14 @@ using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
 using System.Collections;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("RandomEvent")]
-    static class Patch_GameScript_RandomEvent
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_RandomEvent
     {
         private static GameScript instance;
         private static IEnumerator queuedEvent;

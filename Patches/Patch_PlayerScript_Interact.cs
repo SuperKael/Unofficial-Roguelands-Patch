@@ -2,12 +2,14 @@ using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
 using System.Collections;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(PlayerScript))]
     [HarmonyPatch("Interact")]
-    static class Patch_PlayerScript_Interact
+    [HarmonyGadget("URP")]
+    public static class Patch_PlayerScript_Interact
     {
         [HarmonyPrefix]
         public static bool Prefix(PlayerScript __instance, int id, GameScript ___gameScript, Rigidbody ___r, ref bool ___interacting, ref IEnumerator __result)

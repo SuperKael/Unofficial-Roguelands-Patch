@@ -1,12 +1,14 @@
 using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(Millipede))]
     [HarmonyPatch("DropLocal")]
-    static class Patch_Millipede_DropLocal
+    [HarmonyGadget("URP")]
+    public static class Patch_Millipede_DropLocal
     {
         [HarmonyPostfix]
         public static void Postfix(Millipede __instance, ref Transform ___t)

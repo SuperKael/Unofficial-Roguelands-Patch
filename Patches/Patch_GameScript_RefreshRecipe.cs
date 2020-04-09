@@ -1,12 +1,13 @@
 using UnityEngine;
 using HarmonyLib;
-using System.Reflection;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("RefreshRecipe")]
-    static class Patch_GameScript_RefreshRecipe
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_RefreshRecipe
     {
         [HarmonyPostfix]
         public static void Postfix(GameScript __instance, int ___curRecipePage, int ___craftType)

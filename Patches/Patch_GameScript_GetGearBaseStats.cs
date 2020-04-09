@@ -1,12 +1,14 @@
 using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("GetGearBaseStats")]
-    static class Patch_GameScript_GetGearBaseStats
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_GetGearBaseStats
     {
         [HarmonyPrefix]
         public static bool Prefix(int id, ref int[] __result)

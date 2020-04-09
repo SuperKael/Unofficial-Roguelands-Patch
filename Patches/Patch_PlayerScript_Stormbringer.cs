@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Linq;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(PlayerScript))]
     [HarmonyPatch("Stormbringer")]
-    static class Patch_PlayerScript_Stormbringer
+    [HarmonyGadget("URP")]
+    public static class Patch_PlayerScript_Stormbringer
     {
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)

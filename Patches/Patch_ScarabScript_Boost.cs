@@ -3,12 +3,14 @@ using HarmonyLib;
 using System.Reflection;
 using System.Collections;
 using System;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(ScarabScript))]
     [HarmonyPatch("Boost")]
-    static class Patch_ScarabScript_Boost
+    [HarmonyGadget("URP")]
+    public static class Patch_ScarabScript_Boost
     {
         [HarmonyPrefix]
         public static bool Prefix(ScarabScript __instance, ref IEnumerator __result)

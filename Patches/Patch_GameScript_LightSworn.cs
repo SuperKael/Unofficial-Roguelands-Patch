@@ -1,12 +1,14 @@
 using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("LightSworn")]
-    static class Patch_GameScript_LightSworn
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_LightSworn
     {
         [HarmonyPrefix]
         public static bool Prefix(GameScript __instance)

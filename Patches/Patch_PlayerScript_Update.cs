@@ -4,12 +4,14 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Linq;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(PlayerScript))]
     [HarmonyPatch("Update")]
-    static class Patch_PlayerScript_Update
+    [HarmonyGadget("URP")]
+    public static class Patch_PlayerScript_Update
     {
         private static FieldInfo energyField = typeof(GameScript).GetField("energy", BindingFlags.Public | BindingFlags.Static);
 

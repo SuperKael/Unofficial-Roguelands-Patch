@@ -1,12 +1,14 @@
 using UnityEngine;
 using HarmonyLib;
 using System.Reflection;
+using GadgetCore.API;
 
 namespace URP.Patches
 {
     [HarmonyPatch(typeof(GameScript))]
     [HarmonyPatch("PauseMenu")]
-    static class Patch_GameScript_PauseMenu
+    [HarmonyGadget("URP")]
+    public static class Patch_GameScript_PauseMenu
     {
         private static bool pausing;
 
